@@ -1,26 +1,35 @@
-# Ignite Shop
+# Ignite Shop 2.0
 
-> Loja virtual de roupas com pagamento gerenciado pelo Stripe.
+> Ecommerce com gerenciamento pelo Stripe.
 
-## 📲 [Link do deploy]()
+## 📲 [Link do deploy](https://ignite-shop-five.vercel.app/)
 
-![Capa](./public/capa.png)
+![Capa](./public/Capa.png)
 
 ## 📑 Sobre o projeto
 
 Esta aplicação é projeto do módulo de "Fundamentos de Next.js" do curso de especialização Ignite.
 
-A primeira parte é feita durante a prática da aula para implementar este [layout](<https://www.figma.com/file/MjcXVLgQxiPU8s2LuKwstR/Ignite-Shop-(Copy)>).
+- **Ignite Shop** é projeto desenvolvido durante a prática guiada e implementa as funcionalidades deste [layout](<https://www.figma.com/file/MjcXVLgQxiPU8s2LuKwstR/Ignite-Shop-(Copy)>).
 
-A segunda parte é o desafio prático para adicionar as funcionalidades deste [layout](<https://www.figma.com/file/DdDCcDXklWykjkW3AkL6UZ/Ignite-Shop-2.0-(Copy)?node-id=0%3A1>).
+- **Ignite Shop 2.0** é o desafio prático que adiciona mais funcionalidades deste [layout](<https://www.figma.com/file/DdDCcDXklWykjkW3AkL6UZ/Ignite-Shop-2.0-(Copy)?node-id=0%3A1>).
 
 ## ✍🏻 Funcionalidades
 
 Esta aplicação simula uma loja cujo gerenciamento de produtos e pedidos é feito pela biblioteca **Stripe**.
 
-- Possui um carrossel com todos os produtos
-- Detalhes do produto com botão de comprar que redireciona para conclusão de compra no Stripe
-- Página de sucesso caso o usuário tenha concluíio a compra
+### Ignite Shop
+
+- Adiciona carrossel para exibir os produtos
+- Adiciona página de detalhes do produto
+  - Botão de comprar redireciona para conclusão de compra no Stripe
+- Adiciona página de sucesso caso o usuário tenha concluído a compra
+
+### Ignite Shop 2.0
+
+- Implementa a funcionalidade de carrinho, podendo alterar a quantidade e remover o produto
+- Adiciona sidebar do carrinho
+  - Botão de comprar redireciona para conclusão de compra no Stripe
 
 ## 🧠 Aprendizados
 
@@ -31,7 +40,7 @@ Esta aplicação simula uma loja cujo gerenciamento de produtos e pedidos é fei
 
 - Typescript
 - Next.js
+- Stripe
 - Stitches
 - Axios
 - Keen-slider
-- Stripe

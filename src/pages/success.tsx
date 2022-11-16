@@ -3,8 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Stripe from 'stripe'
-import { stripe } from '../../lib/stripe'
-import { ImageContainer, SuccessContainer } from '../../styles/pages/success'
+import { stripe } from '../lib/stripe'
+import { ImageContainer, SuccessContainer } from '../styles/pages/success'
 
 interface SuccessProps {
   customerName: string
@@ -30,7 +30,7 @@ export default function Success({ customerName, product }: SuccessProps) {
         </ImageContainer>
 
         <p>
-          Uhuul <strong>{customerName}</strong>, sua{' '}
+          Uhuul <strong>{customerName}</strong>, sua
           <strong>{product.name}</strong> já está a caminho da sua casa.
         </p>
 

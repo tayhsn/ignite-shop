@@ -4,12 +4,17 @@ import { useKeenSlider } from 'keen-slider/react'
 import Stripe from 'stripe'
 
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Head from 'next/head'
 
+import { Handbag } from 'phosphor-react'
 import { stripe } from '../lib/stripe'
-import { HomeContainer, Product } from '../styles/pages/home'
+import {
+  HomeContainer,
+  Product,
+  ProductFooterDetails,
+} from '../styles/pages/home'
 
 interface HomeProps {
   products: {
@@ -44,10 +49,16 @@ export default function Home({ products }: HomeProps) {
             <Product className="keen-slider__slide">
               <Image src={product.imageUrl} width={520} height={400} alt="" />
 
-              <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-              </footer>
+              <ProductFooterDetails>
+                <span>
+                  <strong>{product.name}</strong>
+                  <strong>{product.price}</strong>
+                </span>
+
+                <button>
+                  <Handbag size={24} />
+                </button>
+              </ProductFooterDetails>
             </Product>
           </Link>
         ))}
@@ -72,6 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(price.unit_amount / 100),
+      defaultPriceId: price.id,
     }
   })
 

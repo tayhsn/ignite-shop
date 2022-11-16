@@ -1,9 +1,8 @@
-import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
 import Stripe from 'stripe'
+import { useCart } from '../../contexts/CartContext'
 
 import { stripe } from '../../lib/stripe'
 import {
@@ -24,24 +23,13 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
-    useState(false)
+  const { addToCart, checkIfAlreadyExists } = useCart()
+  const isProductAlreadyInCart = checkIfAlreadyExists(product.id)
 
-  async function handleBuyProduct() {
-    try {
-      setIsCreatingCheckoutSession(true)
-      const response = await axios.post('/api/checkout', {
-        priceId: product.defaultPriceId,
-      })
+  async function handleAddToCart() {
+    if (isProductAlreadyInCart) return
 
-      const { checkoutUrl } = response.data
-
-      window.location.href = checkoutUrl
-    } catch (error) {
-      setIsCreatingCheckoutSession(false)
-      // ferramenta de observabilidade (datadog/sentry)
-      alert('Falha ao redirecionar ao checkout!')
-    }
+    addToCart(product)
   }
 
   return (
@@ -61,11 +49,8 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button
-            onClick={handleBuyProduct}
-            disabled={isCreatingCheckoutSession}
-          >
-            Comprar agora
+          <button onClick={handleAddToCart} disabled={isProductAlreadyInCart}>
+            Adicionar ao carrinho
           </button>
         </ProductDetails>
       </ProductContainer>
