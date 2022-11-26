@@ -50,7 +50,7 @@ export const CartContent = () => {
          <CartProduct>
             {cartIsNOTEmpty ? (
                cartItems.map((product) => (
-                  <Product>
+                  <Product key={product.id}>
                      <ProductImage>
                         <Image
                            src={product.imageUrl}
