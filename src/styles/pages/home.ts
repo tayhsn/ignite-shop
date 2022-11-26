@@ -88,8 +88,13 @@ export const ProductFooterDetails = styled('footer', {
 
     cursor: 'pointer',
 
-    '&:hover': {
-      background: '$green300',
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    },
+
+    '&:not(:disabled):hover': {
+      backgroundColor: '$green300',
     },
   },
 })
