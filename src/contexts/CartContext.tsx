@@ -1,65 +1,64 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react';
 
-interface CartItem {
-  id: string
-  name: string
-  description: string
-  imageUrl: string
-  price: string
-  defaultPriceId: string
+export interface CartItem {
+   id: string;
+   name: string;
+   description: string;
+   imageUrl: string;
+   price: string;
+   priceNumber: number;
+   defaultPriceId: string;
 }
 
 interface CartContextType {
-  cartItemsTotal: number
-  cartItems: CartItem[]
-  addToCart: (product: CartItem) => void
-  removeFromCart: (productId: string) => void
-  checkIfAlreadyExists: (productId: string) => boolean
+   totalPrice: number;
+   cartQuantity: number;
+   cartItems: CartItem[];
+   addToCart: (product: CartItem) => void;
+   removeFromCart: (productId: string) => void;
+   checkIfAlreadyExists: (productId: string) => boolean;
 }
 
-export const CartContext = createContext({} as CartContextType)
+export const CartContext = createContext({} as CartContextType);
 
 interface CartProviderProps {
-  children: ReactNode
+   children: ReactNode;
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const cartItemsTotal = cartItems.length
+   const cartQuantity = cartItems.length;
 
-  const addToCart = (product: CartItem) => {
-    setCartItems((state) => [...state, product])
-  }
+   const totalPrice = cartItems.reduce((total, product) => {
+      return total + product.priceNumber;
+   }, 0);
 
-  const removeFromCart = (productId: string) => {
-    const newCart = cartItems.filter((item) => item.id !== productId)
-    setCartItems(newCart)
-  }
+   const addToCart = (product: CartItem) =>
+      setCartItems((state) => [...state, product]);
 
-  const checkIfAlreadyExists = (productId: string) => {
-    return cartItems.some((product) => product.id === productId)
-  }
+   const removeFromCart = (productId: string) => {
+      const newCart = cartItems.filter((item) => item.id !== productId);
+      setCartItems(newCart);
+   };
 
-  return (
-    <CartContext.Provider
-      value={{
-        cartItems,
-        cartItemsTotal,
-        addToCart,
-        removeFromCart,
-        checkIfAlreadyExists,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
-  )
-}
+   const checkIfAlreadyExists = (productId: string) =>
+      cartItems.some((product) => product.id === productId);
 
-export const useCart = () => useContext(CartContext)
+   return (
+      <CartContext.Provider
+         value={{
+            totalPrice,
+            cartItems,
+            cartQuantity,
+            addToCart,
+            removeFromCart,
+            checkIfAlreadyExists,
+         }}
+      >
+         {children}
+      </CartContext.Provider>
+   );
+};
+
+export const useCart = () => useContext(CartContext);
