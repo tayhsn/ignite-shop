@@ -26,41 +26,75 @@ export const Product = styled('div', {
     objectFit: 'cover',
   },
 
-  footer: {
-    position: 'absolute',
-    bottom: '0.25rem',
-    left: '0.25rem',
-    right: '0.25rem',
-    padding: '2rem',
-
-    borderRadius: 6,
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-
-    backgroundColor: 'rgba(0,0,0,0.6)',
-
-    transform: 'translateY(110%)',
-    opacity: 0,
-    transition: 'all 0.2s ease-in-out',
-
-    strong: {
-      fontSize: '$lg',
-      color: '$gray100',
-    },
-
-    span: {
-      fontSize: '$xl',
-      fontWeight: 'bold',
-      color: '$green300',
-    },
-  },
-
   '&:hover': {
     footer: {
       transform: 'translateY(0%)',
       opacity: 1,
+    },
+  },
+})
+
+export const ProductFooterDetails = styled('footer', {
+  position: 'absolute',
+  bottom: '0.25rem',
+  left: '0.25rem',
+  right: '0.25rem',
+  padding: '2rem',
+
+  borderRadius: 6,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+
+  backgroundColor: 'rgba(0,0,0,0.6)',
+
+  transform: 'translateY(110%)',
+  opacity: 0,
+  transition: 'all 0.2s ease-in-out',
+
+  strong: {
+    fontSize: '$lg',
+    color: '$gray100',
+  },
+
+  span: {
+    fontWeight: 'bold',
+
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+
+    'strong:first-child': {
+      fontSize: '$lg',
+      color: '$white',
+    },
+
+    'strong:last-child': {
+      fontSize: '$xl',
+      color: '$green300',
+    },
+  },
+
+  button: {
+    width: '3rem',
+    height: '3rem',
+
+    border: 0,
+    borderRadius: 6,
+
+    background: '$green500',
+    color: '$white',
+
+    cursor: 'pointer',
+
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    },
+
+    '&:not(:disabled):hover': {
+      backgroundColor: '$green300',
     },
   },
 })
