@@ -9,7 +9,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Handbag, Trash } from 'phosphor-react';
-import { MouseEvent } from 'react';
+import { MouseEvent, ReactNode } from 'react';
+import { HeaderWithCart } from '../components/HeaderWithCart';
+import { addCartToast, removeCartToast } from '../components/Toast';
 import { CartItem, useCart } from '../contexts/CartContext';
 import { stripe } from '../lib/stripe';
 import {
@@ -17,7 +19,6 @@ import {
    Product,
    ProductFooterDetails,
 } from '../styles/pages/home';
-import { addCartToast, removeCartToast } from '../components/Toast';
 
 interface HomeProps {
    products: CartItem[];
@@ -148,4 +149,14 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       revalidate: 60 * 60 * 2, // 60sec * 60min = 1hour * 2 = 2 hours
    };
+};
+
+Home.getLayout = function getLayout(page: ReactNode) {
+   return (
+      <>
+         <HeaderWithCart />
+
+         {page}
+      </>
+   );
 };

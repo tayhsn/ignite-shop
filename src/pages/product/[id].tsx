@@ -1,7 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode } from 'react';
 import Stripe from 'stripe';
+import { Cart } from '../../components/Cart';
+import { HeaderWithCart } from '../../components/HeaderWithCart';
 import { useCart } from '../../contexts/CartContext';
 
 import { stripe } from '../../lib/stripe';
@@ -95,4 +99,14 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
       },
       revalidate: 60 * 60 * 1, // 1 hour
    };
+};
+
+Product.getLayout = function getLayout(page: ReactNode) {
+   return (
+      <>
+         <HeaderWithCart />
+
+         {page}
+      </>
+   );
 };
