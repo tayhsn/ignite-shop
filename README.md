@@ -21,14 +21,14 @@ Esta aplicação simula uma loja de blusas cujo gerenciamento de estoque de prod
 ### Ignite Shop
 
 -  Implementa carrossel para exibir os produtos
--  Implementa página de detalhes do produto com botão para finalizar a compra
+-  Implementa página de detalhes do produto com botão para finalizar a compra (só é possível comprar um produto por vez)
 -  Implementa página de sucesso caso o usuário tenha concluído a compra
 
 ### Ignite Shop 2.0
 
 -  Adiciona as funcionalidades:
    -  Dialog do Carrinho no Header
-   -  Sidebar para exibir os produtos, valor da compra e botão de finalizar a compra
+   -  Sidebar para exibir os produtos, valor da compra e botão de finalizar a compra (é possível comprar mais de um produto por vez)
    -  Os produtos podem ser adicionados ou removidos do carrinho através da página página principal e de detalhes
 
 ## 🧑🏻‍💻 Para testar
@@ -45,6 +45,7 @@ CVV: qualquer combinação de 3 digitos > 123
 
 -  Conceitos de Server-Side Renderig (SSR) e Static Site Generation (SSG)
 -  Conceitos fundamentais do Next.js
+-  Implementar layouts por página
 -  Uso da biblioteca de estilização Stitches
 
 ## 🛠 Tecnologias utilizadas
@@ -53,5 +54,6 @@ CVV: qualquer combinação de 3 digitos > 123
 -  Next.js
 -  Stripe
 -  Stitches
+-  React-toastify
 -  Axios
 -  Keen-slider
