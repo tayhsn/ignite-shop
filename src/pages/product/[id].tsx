@@ -10,6 +10,7 @@ import {
    ProductContainer,
    ProductDetails,
 } from '../../styles/pages/product';
+import { priceFormatter } from '../../utils/formatter';
 
 interface ProductProps {
    product: {
@@ -25,16 +26,13 @@ interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
    const { addToCart, checkIfAlreadyExists, removeFromCart } = useCart();
-   const isProductAlreadyInCart = checkIfAlreadyExists(product.id);
+   const alreadyInCart = checkIfAlreadyExists(product.id);
 
    const handleAddToCart = () => addToCart(product);
 
    const handleRemoveFromCart = () => removeFromCart(product.id);
 
-   const formattedPrice = new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-   }).format(product.priceNumber / 100);
+   const formattedPrice = priceFormatter(product.priceNumber / 100);
 
    return (
       <>
@@ -53,7 +51,7 @@ export default function Product({ product }: ProductProps) {
 
                <p>{product.description}</p>
 
-               {isProductAlreadyInCart ? (
+               {alreadyInCart ? (
                   <button onClick={handleRemoveFromCart}>
                      Remover da sacola
                   </button>
