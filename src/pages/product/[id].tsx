@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 import Stripe from 'stripe';
 import { HeaderWithCart } from '../../components/HeaderWithCart';
 import { useCart } from '../../contexts/CartContext';
@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
    };
 };
 
-Product.getLayout = function getLayout(page: ReactNode) {
+Product.getLayout = function getLayout(page: ReactElement) {
    return (
       <>
          <HeaderWithCart />

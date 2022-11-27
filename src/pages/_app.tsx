@@ -7,12 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CartProvider } from '../contexts/CartContext';
 
 import { NextPage } from 'next';
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 globalStyles();
 
 export type NextPageLayout<P = {}, IP = P> = NextPage<P, IP> & {
-   getLayout?: (page: ReactNode) => ReactNode;
+   getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsLayout = AppProps & {
@@ -20,11 +20,13 @@ type AppPropsLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsLayout) {
+   const getLayout = Component.getLayout || ((page) => page);
+
    return (
       <CartProvider>
          <ToastContainer />
 
-         {Component.getLayout(<Component {...pageProps} />)}
+         {getLayout(<Component {...pageProps} />)}
       </CartProvider>
    );
 }

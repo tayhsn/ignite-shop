@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 import Stripe from 'stripe';
 import logoImg from '../assets/logo.svg';
 import { stripe } from '../lib/stripe';
@@ -84,7 +84,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
    };
 };
 
-Success.getLayout = function getLayout(page: ReactNode) {
+Success.getLayout = function getLayout(page: ReactElement) {
    return (
       <>
          <SuccessHeader>

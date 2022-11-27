@@ -9,9 +9,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Handbag, Trash } from 'phosphor-react';
-import { MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactElement } from 'react';
 import { HeaderWithCart } from '../components/HeaderWithCart';
-import { addCartToast, removeCartToast } from '../components/Toast';
 import { CartItem, useCart } from '../contexts/CartContext';
 import { stripe } from '../lib/stripe';
 import {
@@ -149,7 +148,7 @@ export const getStaticProps: GetStaticProps = async () => {
    };
 };
 
-Home.getLayout = function getLayout(page: ReactNode) {
+Home.getLayout = function getLayout(page: ReactElement) {
    return (
       <>
          <HeaderWithCart />
