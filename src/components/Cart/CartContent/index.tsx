@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { MouseEvent, useState } from 'react';
-import { useCart } from '../../../contexts/CartContext';
+import { CartItem, useCart } from '../../../contexts/CartContext';
 import { priceFormatter } from '../../../utils/formatter';
 import {
    CartContentContainer,
@@ -34,11 +34,11 @@ export const CartContent = () => {
 
    const handleRemoveFromCart = async (
       event: MouseEvent<HTMLButtonElement>,
-      productId: string
+      product: CartItem
    ) => {
       event.preventDefault();
 
-      removeFromCart(productId);
+      removeFromCart(product);
    };
 
    const formattedTotalPrice = priceFormatter(totalPrice);
@@ -67,7 +67,7 @@ export const CartContent = () => {
                         </span>
                         <button
                            onClick={(event) =>
-                              handleRemoveFromCart(event, product.id)
+                              handleRemoveFromCart(event, product)
                            }
                         >
                            Remover
