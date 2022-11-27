@@ -2,9 +2,15 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ReactElement } from 'react';
 import Stripe from 'stripe';
+import logoImg from '../assets/logo.svg';
 import { stripe } from '../lib/stripe';
-import { ImageContainer, SuccessContainer } from '../styles/pages/success';
+import {
+   ImageContainer,
+   SuccessContainer,
+   SuccessHeader,
+} from '../styles/pages/success';
 
 interface SuccessProps {
    customerName: string;
@@ -76,4 +82,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
          products,
       },
    };
+};
+
+Success.getLayout = function getLayout(page: ReactElement) {
+   return (
+      <>
+         <SuccessHeader>
+            <Link href='/'>
+               <Image src={logoImg} alt='' />
+            </Link>
+         </SuccessHeader>
+
+         {page}
+      </>
+   );
 };

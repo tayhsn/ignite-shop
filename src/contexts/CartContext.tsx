@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
+import { addCartToast, removeCartToast } from '../components/Toast';
 
 export interface CartItem {
    id: string;
@@ -15,7 +16,7 @@ interface CartContextType {
    cartQuantity: number;
    cartItems: CartItem[];
    addToCart: (product: CartItem) => void;
-   removeFromCart: (productId: string) => void;
+   removeFromCart: (product: CartItem) => void;
    checkIfAlreadyExists: (productId: string) => boolean;
 }
 
@@ -34,12 +35,18 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       return total + product.priceNumber;
    }, 0);
 
-   const addToCart = (product: CartItem) =>
+   const addToCart = (product: CartItem) => {
       setCartItems((state) => [...state, product]);
 
-   const removeFromCart = (productId: string) => {
-      const newCart = cartItems.filter((item) => item.id !== productId);
+      addCartToast(product.name);
+   };
+
+   const removeFromCart = (product: CartItem) => {
+      const newCart = cartItems.filter((item) => item.id !== product.id);
+
       setCartItems(newCart);
+
+      removeCartToast(product.name);
    };
 
    const checkIfAlreadyExists = (productId: string) =>

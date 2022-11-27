@@ -1,5 +1,16 @@
 import { styled } from '..';
 
+export const SuccessHeader = styled('header', {
+   width: '100%',
+   maxWidth: 1180,
+
+   margin: '0 auto',
+   padding: '2rem 0',
+
+   display: 'flex',
+   justifyContent: 'center',
+});
+
 export const SuccessContainer = styled('main', {
    display: 'flex',
    flexDirection: 'column',

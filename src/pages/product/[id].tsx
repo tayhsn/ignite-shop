@@ -1,7 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { ReactElement } from 'react';
 import Stripe from 'stripe';
+import { HeaderWithCart } from '../../components/HeaderWithCart';
 import { useCart } from '../../contexts/CartContext';
 
 import { stripe } from '../../lib/stripe';
@@ -26,13 +28,13 @@ interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
    const { addToCart, checkIfAlreadyExists, removeFromCart } = useCart();
-   const alreadyInCart = checkIfAlreadyExists(product.id);
 
    const handleAddToCart = () => addToCart(product);
 
-   const handleRemoveFromCart = () => removeFromCart(product.id);
+   const handleRemoveFromCart = () => removeFromCart(product);
 
-   const formattedPrice = priceFormatter(product.priceNumber / 100);
+   const alreadyInCart = checkIfAlreadyExists(product.id);
+   const formattedPrice = priceFormatter(product.priceNumber);
 
    return (
       <>
@@ -90,9 +92,19 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
             description: product.description,
             imageUrl: product.images[0],
             defaultPriceId: price.id,
-            price: price.unit_amount,
+            priceNumber: price.unit_amount,
          },
       },
       revalidate: 60 * 60 * 1, // 1 hour
    };
+};
+
+Product.getLayout = function getLayout(page: ReactElement) {
+   return (
+      <>
+         <HeaderWithCart />
+
+         {page}
+      </>
+   );
 };
