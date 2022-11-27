@@ -17,6 +17,7 @@ import {
    Product,
    ProductFooterDetails,
 } from '../styles/pages/home';
+import { addCartToast, removeCartToast } from '../components/Toast';
 
 interface HomeProps {
    products: CartItem[];
@@ -54,15 +55,17 @@ export default function Home({ products }: HomeProps) {
       event.preventDefault();
 
       addToCart(product);
+      addCartToast(product.name);
    };
 
    const handleRemoveFromCart = (
       event: MouseEvent<HTMLButtonElement>,
-      productId: string
+      product: CartItem
    ) => {
       event.preventDefault();
 
-      removeFromCart(productId);
+      removeFromCart(product.id);
+      removeCartToast(product.name);
    };
 
    return (
@@ -95,7 +98,7 @@ export default function Home({ products }: HomeProps) {
                         {checkIfAlreadyExists(product.id) ? (
                            <button
                               onClick={(event) =>
-                                 handleRemoveFromCart(event, product.id)
+                                 handleRemoveFromCart(event, product)
                               }
                            >
                               <Trash size={24} />
