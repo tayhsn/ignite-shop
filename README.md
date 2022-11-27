@@ -4,7 +4,7 @@
 
 ## 📲 [Link do deploy](https://ignite-shop-five.vercel.app/)
 
-![Capa](./public/Capa.png)
+![Capa](./public/capa.png)
 
 ## 📑 Sobre o projeto
 
