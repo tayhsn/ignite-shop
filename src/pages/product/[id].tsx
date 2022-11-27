@@ -34,7 +34,7 @@ export default function Product({ product }: ProductProps) {
 
    const handleAddToCart = () => addToCart(product);
 
-   const handleRemoveFromCart = () => removeFromCart(product.id);
+   const handleRemoveFromCart = () => removeFromCart(product);
 
    const formattedPrice = priceFormatter(product.priceNumber / 100);
 

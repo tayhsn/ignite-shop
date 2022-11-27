@@ -56,7 +56,6 @@ export default function Home({ products }: HomeProps) {
       event.preventDefault();
 
       addToCart(product);
-      addCartToast(product.name);
    };
 
    const handleRemoveFromCart = (
@@ -65,8 +64,7 @@ export default function Home({ products }: HomeProps) {
    ) => {
       event.preventDefault();
 
-      removeFromCart(product.id);
-      removeCartToast(product.name);
+      removeFromCart(product);
    };
 
    return (
