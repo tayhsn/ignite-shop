@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Image from 'next/image';
+import Router from 'next/router';
 import { MouseEvent, useState } from 'react';
 import { CartItem, useCart } from '../../../contexts/CartContext';
 import { priceFormatter } from '../../../utils/formatter';
@@ -21,16 +22,18 @@ export const CartContent = () => {
       try {
          setIsCreatingCheckoutSession(true);
 
-         const response = await axios.post('/api/checkout', {
-            products: cartItems,
-         });
+         const response = await axios
+            .post('/api/checkout', {
+               products: cartItems,
+            })
+            .then((res) => res.data);
 
-         const { checkoutUrl } = response.data;
-         window.location.href = checkoutUrl;
+         const { checkoutUrl } = response;
+         Router.push(checkoutUrl);
       } catch (error) {
          setIsCreatingCheckoutSession(false);
          // ferramenta de observabilidade (datadog/sentry)
-         console.log(`Error: ${error.message}`);
+         console.log(`Error: ${error}`);
          alert(
             'Falha ao redirecionamento ao checkout. Tente novamente mais tarde!'
          );
