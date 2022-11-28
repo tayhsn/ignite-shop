@@ -28,7 +28,7 @@ export default function Home({ products }: HomeProps) {
 
    const [sliderRef] = useKeenSlider({
       slides: {
-         perView: 3,
+         perView: 2.6,
          spacing: 48,
       },
       rubberband: false,
@@ -129,14 +129,16 @@ export const getStaticProps: GetStaticProps = async () => {
    const products = response.data.map((product) => {
       const price = product.default_price as Stripe.Price;
 
+      const formattedPrice = new Intl.NumberFormat('pt-BR', {
+         style: 'currency',
+         currency: 'BRL',
+      }).format(price.unit_amount / 100);
+
       return {
          id: product.id,
          name: product.name,
          imageUrl: product.images[0],
-         price: new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-         }).format(price.unit_amount / 100),
+         price: formattedPrice,
          priceNumber: price.unit_amount,
          defaultPriceId: price.id,
       };
