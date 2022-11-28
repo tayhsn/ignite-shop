@@ -3,14 +3,19 @@ import { styled } from '@stitches/react';
 export const CartContentContainer = styled('div', {
    width: '100%',
    minHeight: 'calc(100vh - 100px)',
+   paddingBottom: 16,
 
    display: 'flex',
    flexDirection: 'column',
    justifyContent: 'space-between',
+   gap: 16,
 });
 
 export const CartProduct = styled('section', {
-   minHeight: '20.625rem',
+   minHeight: '22rem',
+
+   overflow: 'auto',
+   scrollbarColor: 'dark',
 
    display: 'flex',
    flexDirection: 'column',
@@ -18,7 +23,7 @@ export const CartProduct = styled('section', {
 });
 
 export const Product = styled('div', {
-   width: '24rem',
+   width: 'fit-content',
    height: '5.875rem',
 
    display: 'flex',
@@ -42,8 +47,6 @@ export const ProductImage = styled('div', {
 });
 
 export const ProductInfo = styled('div', {
-   height: '100%',
-
    display: 'flex',
    flexDirection: 'column',
    alignItems: 'flex-start',
@@ -54,16 +57,9 @@ export const ProductInfo = styled('div', {
    span: {
       display: 'flex',
       flexDirection: 'column',
-      gap: 2,
-   },
+      gap: 4,
 
-   'span p': {
       fontSize: '$md',
-   },
-
-   'span strong': {
-      fontSize: '$md',
-      fontWeight: 'bold',
    },
 
    button: {

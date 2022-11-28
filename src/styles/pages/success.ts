@@ -5,7 +5,7 @@ export const SuccessHeader = styled('header', {
    maxWidth: 1180,
 
    margin: '0 auto',
-   padding: '2rem 0',
+   padding: '2rem',
 
    display: 'flex',
    justifyContent: 'center',
@@ -18,6 +18,10 @@ export const SuccessContainer = styled('main', {
    justifyContent: 'center',
    margin: '0 auto',
    height: 656,
+
+   textAlign: 'center',
+
+   padding: '2rem',
 
    h1: {
       fontSize: '$2xl',
@@ -36,7 +40,6 @@ export const SuccessContainer = styled('main', {
       fontSize: '$xl',
       color: '$gray300',
       maxWidth: 560,
-      textAlign: 'center',
       marginTop: '2rem',
       lineHeight: 1.4,
    },

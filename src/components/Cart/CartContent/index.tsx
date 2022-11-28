@@ -94,7 +94,9 @@ export const CartContent = () => {
                <tbody>
                   <tr>
                      <td>Quantidade</td>
-                     <td>{cartQuantity} itens</td>
+                     <td>
+                        {cartQuantity} ite{cartQuantity > 1 ? 'ns' : 'm'}
+                     </td>
                   </tr>
                   <tr>
                      <td>
