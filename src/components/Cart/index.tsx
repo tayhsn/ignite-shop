@@ -4,9 +4,9 @@ import { useCart } from '../../contexts/CartContext';
 import { CartContent } from './CartContent';
 import {
    CartButtonContainer,
+   CartContainer,
    Close,
    Content,
-   Description,
    Overlay,
 } from './styles';
 
@@ -34,9 +34,13 @@ export const Cart = () => {
 
                <Dialog.Title>Sacola de compras</Dialog.Title>
 
-               <Description>
-                  {cartHasContent ? <CartContent /> : <>A sacola está vazia!</>}
-               </Description>
+               <CartContainer>
+                  {cartHasContent ? (
+                     <CartContent />
+                  ) : (
+                     <h3>A sacola está vazia!</h3>
+                  )}
+               </CartContainer>
             </Content>
          </Dialog.Portal>
       </Dialog.Root>

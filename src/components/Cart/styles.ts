@@ -37,7 +37,7 @@ export const CartButtonContainer = styled('button', {
       color: '$gray100',
 
       border: '3px solid $gray900',
-      borderRadius: '1000px',
+      borderRadius: 1000,
 
       display: 'flex',
       alignItems: 'center',
@@ -65,12 +65,16 @@ export const Overlay = styled(Dialog.Overlay, {
 export const Content = styled(Dialog.Content, {
    position: 'absolute',
    top: 0,
-   right: '-100%',
+
    padding: '24px',
    width: '100%',
    maxWidth: '480px',
-   height: '100%',
-   maxHeight: '100vh',
+   height: '100vh',
+
+   display: 'flex',
+   flexDirection: 'column',
+   alignItems: 'center',
+
    background: '$gray800',
    zIndex: '2',
 
@@ -91,15 +95,13 @@ export const Close = styled(Dialog.Close, {
    cursor: 'pointer',
 });
 
-export const Description = styled('main', {
+export const CartContainer = styled('main', {
    display: 'flex',
    flexDirection: 'column',
    justifyContent: 'space-between',
+   alignItems: 'center',
+
    width: '24rem',
    minHeight: 'calc(100vh - 80px)',
    padding: '2rem 0',
-
-   p: {
-      fontSize: '$lg',
-   },
 });
