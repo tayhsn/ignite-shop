@@ -20,15 +20,20 @@ export const CartContent = () => {
    const handleBuyProduct = async () => {
       try {
          setIsCreatingCheckoutSession(true);
+
          const response = await axios.post('/api/checkout', {
             products: cartItems,
          });
+
          const { checkoutUrl } = response.data;
          window.location.href = checkoutUrl;
       } catch (error) {
          setIsCreatingCheckoutSession(false);
          // ferramenta de observabilidade (datadog/sentry)
-         alert('Falha ao redirecionar ao checkout!');
+         console.log(`Error: ${error.message}`);
+         alert(
+            'Falha ao redirecionamento ao checkout. Tente novamente mais tarde!'
+         );
       }
    };
 
