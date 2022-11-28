@@ -98,6 +98,7 @@ export default function Home({ products }: HomeProps) {
                               onClick={(event) =>
                                  handleRemoveFromCart(event, product)
                               }
+                              aria-label='Remover produto da sacola'
                            >
                               <Trash size={24} />
                            </button>
@@ -106,6 +107,7 @@ export default function Home({ products }: HomeProps) {
                               onClick={(event) =>
                                  handleAddToCart(event, product)
                               }
+                              aria-label='Adicionar produto na sacola'
                            >
                               <Handbag size={24} />
                            </button>

@@ -54,11 +54,19 @@ export default function Product({ product }: ProductProps) {
                <p>{product.description}</p>
 
                {alreadyInCart ? (
-                  <button onClick={handleRemoveFromCart}>
+                  <button
+                     onClick={handleRemoveFromCart}
+                     aria-label='Remover produto da sacola'
+                  >
                      Remover da sacola
                   </button>
                ) : (
-                  <button onClick={handleAddToCart}>Adicionar a sacola</button>
+                  <button
+                     onClick={handleAddToCart}
+                     aria-label='Adicionar produto na sacola'
+                  >
+                     Adicionar a sacola
+                  </button>
                )}
             </ProductDetails>
          </ProductContainer>

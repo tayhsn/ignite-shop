@@ -77,6 +77,7 @@ export const CartContent = () => {
                            onClick={(event) =>
                               handleRemoveFromCart(event, product)
                            }
+                           aria-label='Remover produto da sacola'
                         >
                            Remover
                         </button>
@@ -109,6 +110,7 @@ export const CartContent = () => {
             <button
                disabled={isCreatingCheckoutSession}
                onClick={handleBuyProduct}
+               aria-label='Finalizar compra'
             >
                Finalizar compra
             </button>

@@ -18,7 +18,7 @@ export const Cart = () => {
    return (
       <Dialog.Root>
          <Dialog.Trigger asChild>
-            <CartButtonContainer>
+            <CartButtonContainer aria-label='Ver o carrinho'>
                <Handbag size={24} />
                {cartHasContent ? <span>{cartQuantity}</span> : <></>}
             </CartButtonContainer>

@@ -8,7 +8,7 @@ import { HeaderContainer } from './styles';
 export const HeaderWithCart = () => {
    return (
       <HeaderContainer>
-         <Link href='/'>
+         <Link href='/' aria-label='Volte para a página inicial'>
             <Image src={logoImg} alt='' />
          </Link>
 
